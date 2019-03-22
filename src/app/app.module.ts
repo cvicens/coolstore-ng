@@ -8,6 +8,8 @@ import { BsDropdownConfig, BsDropdownModule } from 'ngx-bootstrap/dropdown';
 // Patternfly
 import { ApplicationLauncherModule } from 'patternfly-ng/navigation';
 import { VerticalNavigationModule } from 'patternfly-ng/navigation';
+import { InfoStatusCardModule } from 'patternfly-ng/card';
+import { CardModule } from 'patternfly-ng/card';
 
 // Components
 import { AppComponent } from './app.component';
@@ -38,6 +40,8 @@ const appRoutes: Routes = [
   imports: [
     ApplicationLauncherModule,
     VerticalNavigationModule,
+    InfoStatusCardModule,
+    CardModule,
     BsDropdownModule.forRoot(),
     RouterModule.forRoot(
       appRoutes,
