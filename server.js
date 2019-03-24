@@ -1,6 +1,8 @@
 const express = require('express');
 const corser = require("corser");
 
+const { applyHeaderRouting } = require('./istio/header-routing');
+
 const app = express();
 app.use(corser.create());
 
@@ -15,6 +17,17 @@ app.options("*", function (req, res) {
 // Used for App health checking
 app.get('/sys/info/ping', function(req, res, next) {
   res.end('"OK"');
+});
+
+// Used for App health checking
+app.get('/istio/header-routing', async function(req, res) {
+    try {
+        const result = await applyHeaderRouting();
+        res.send(result);
+    } catch (error) {
+        console.log('header-routing error', error);
+        res.status(500).send({success: false, error: error});
+    }
 });
 
 const port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080;
