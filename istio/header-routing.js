@@ -10,7 +10,13 @@ const destinationRule = require('./header-routing-destination-rule.json')
 
 async function main () {
   try {
-    const client = new Client({ config: config.fromKubeconfig(), version: '1.11' })
+    let client = undefined;
+    if (process.env.KUBERNETES_PORT) {
+      client = new Client({ config: config.getInCluster() });
+      await client.loadSpec()
+    } else {
+      client = new Client({ config: config.fromKubeconfig(), version: '1.11' })
+    }
 
     const virtualServicesCrd = await client.apis['apiextensions.k8s.io'].v1beta1.customresourcedefinitions('virtualservices.networking.istio.io').get()
     console.log('virtualServicesCrd', virtualServicesCrd);
