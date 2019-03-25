@@ -34,10 +34,16 @@ rules:
 - apiGroups:
   - apiextensions.k8s.io
   resources:
-  - CustomResourceDefinition
+  - customresourcedefinitions
   verbs:
-  - get
-  - create
+  - '*'
+- apiGroups:
+  - networking.istio.io
+  resources:
+  - destinationrules
+  - virtualservices
+  verbs:
+  - '*'
 - apiGroups:
   - cloudnative.redhat.com
   resources:

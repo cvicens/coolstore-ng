@@ -1,7 +1,7 @@
 const express = require('express');
 const corser = require("corser");
 
-const { applyHeaderRouting } = require('./istio/header-routing');
+const { applyHeaderRouting } = require('./istio/header-routing-raw');
 
 const app = express();
 app.use(corser.create());
