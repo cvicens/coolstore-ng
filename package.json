@@ -22,8 +22,6 @@
     "core-js": "^2.5.4",
     "corser": "^2.0.1",
     "express": "^4.16.4",
-    "kubernetes-client": "^6.11.0",
-    "openshift-rest-client": "^2.0.0",
     "patternfly": "^3.59.1",
     "patternfly-ng": "^4.5.1",
     "request": "^2.88.0",
