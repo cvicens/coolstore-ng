@@ -1,13 +1,20 @@
 /* eslint no-console:0 */
 const rp = require('request-promise-native');
+const fs = require('fs');
+const yaml = require('js-yaml');
 
 const config = require('./config');
 
 const API_GROUP = "networking.istio.io";
 const API_VERSION = "v1alpha3";
 
-const virtualService = require('./header-routing-virtual-service.json');
-const destinationRule = require('./header-routing-destination-rule.json');
+//const virtualService = require('./header-routing-virtual-service.json');
+const virtualService = yaml.safeLoad(fs.readFileSync('./istio/header-routing-virtual-service.yaml', 'utf8'));
+console.log('>>>>>>>>>', JSON.stringify(virtualService));
+
+//const destinationRule = require('./header-routing-destination-rule.json');
+const destinationRule = yaml.safeLoad(fs.readFileSync('./istio/header-routing-destination-rule.yaml', 'utf8'));
+console.log('>>>>>>>>>', JSON.stringify(destinationRule));
 
 const VIRTUAL_SERVICES_KIND_PLURAL = 'virtualservices';
 const DESTINATION_RULES_KIND_PLURAL = 'destinationrules';
