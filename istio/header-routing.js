@@ -18,6 +18,8 @@ async function main () {
       client = new Client({ config: config.fromKubeconfig(), version: '1.11' })
     }
 
+    console.log('client', client);
+
     const virtualServicesCrd = await client.apis['apiextensions.k8s.io'].v1beta1.customresourcedefinitions('virtualservices.networking.istio.io').get()
     console.log('virtualServicesCrd', virtualServicesCrd);
     client.addCustomResourceDefinition(virtualServicesCrd.body)
