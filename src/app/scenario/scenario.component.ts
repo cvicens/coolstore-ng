@@ -21,10 +21,10 @@ export class ScenarioComponent implements OnInit {
 
   actionResult: GenericResult;
 
-  notificationHeader: string = 'Default Header.';
-  notificationMessage: string = 'Default Message.';
+  notificationHeader = 'Default Header.';
+  notificationMessage = 'Default Message.';
   notificationType: NotificationType = NotificationType.SUCCESS;
-  notificationHidden: boolean = true;
+  notificationHidden = true;
 
   constructor(
     private route: ActivatedRoute,
