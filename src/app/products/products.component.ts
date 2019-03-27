@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { InfoStatusCardConfig } from 'patternfly-ng/card';
 import { CardAction, CardConfig, CardFilter, CardFilterPosition } from 'patternfly-ng/card';
+import { Product } from '../model/product.model';
+import { ProductsService } from '../services/products.service';
 
 const data = [
   {
@@ -23,13 +25,23 @@ const data = [
 export class ProductsComponent implements OnInit {
   config: CardConfig;
 
-  constructor() { }
+  products: Product[];
+
+  constructor(private productsService: ProductsService) {
+    console.log('ProductsComponent');
+    this.productsService.products.subscribe(products => {
+      console.log('products', products);
+      if (products) {
+        this.products = products;
+      }
+    });
+  }
 
   ngOnInit() {
+    console.log('ngOnInit');
     this.config = {
       noPadding: true,
       topBorder: true
     } as CardConfig;
   }
-
 }

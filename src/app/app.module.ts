@@ -20,7 +20,8 @@ import { ProductsComponent } from './products/products.component';
 import { ScenarioComponent } from './scenario/scenario.component';
 
 // Services
-import { ScenariosService } from 'src/services/scenarios.service';
+import { ScenariosService } from 'src/app/services/scenarios.service';
+import { ProductsService } from 'src/app/services/products.service';
 
 const appRoutes: Routes = [
   { path: 'products', component: ProductsComponent },
@@ -103,7 +104,7 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpClientModule
   ],
-  providers: [BsDropdownConfig, ScenariosService],
+  providers: [BsDropdownConfig, ScenariosService, ProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

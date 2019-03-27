@@ -11,8 +11,8 @@ import { VerticalNavigationItem } from 'patternfly-ng/navigation/vertical-naviga
 @Component({
   encapsulation: ViewEncapsulation.None,
   selector: 'app-main',
-  // styleUrls: ['./main.component.css']
-  styles: [`
+  styleUrls: ['./main.component.css'],
+  /*styles: [`
     .faux-layout {
       position: fixed;
       top: 37px;
@@ -41,7 +41,7 @@ import { VerticalNavigationItem } from 'patternfly-ng/navigation/vertical-naviga
     .navbar-brand-txt {
       line-height: 34px;
     }
-  `],
+  `],*/
   templateUrl: './main.component.html',
 })
 export class MainComponent implements OnInit {

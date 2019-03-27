@@ -1,5 +1,5 @@
 .product-footer-row {
-  align-content: flex-start;
+  align-content: flex-end;
   text-align: justify
 }
 
@@ -17,10 +17,10 @@
   width: 50%;
 }
 /deep/ .custom-card .card-pf {
-  height: 400px;
+  height: 450px !important;
 }
 /deep/ .custom-card .card-pf-body {
-  height: 335px;
+  height: 385px !important;
   overflow-y: auto;
   overflow-x: hidden;
 }

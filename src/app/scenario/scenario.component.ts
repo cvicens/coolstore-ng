@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { CardConfig, CardAction } from 'patternfly-ng/card';
-import { ScenariosService } from 'src/services/scenarios.service';
-import { GenericResult } from 'src/model/generic-result.model';
+import { ScenariosService } from 'src/app/services/scenarios.service';
+import { GenericResult } from '../model/generic-result.model';
 import { NotificationType } from 'patternfly-ng/notification';
 
 @Component({

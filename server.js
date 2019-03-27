@@ -1,6 +1,9 @@
 const express = require('express');
 const corser = require("corser");
 
+const keycloakConfig = require('./config/keycloak.config');
+const coolstoreConfig = require('./config/coolstore.config');
+
 const { applyHeaderRouting } = require('./istio/header-routing-raw');
 
 const app = express();
@@ -17,6 +20,15 @@ app.options("*", function (req, res) {
 // Used for App health checking
 app.get('/sys/info/ping', function(req, res, next) {
   res.end('"OK"');
+});
+
+// keycloak config server
+app.get('/keycloak.json', function(req, res, next) {
+  res.json(keycloakConfig);
+});
+// coolstore config server
+app.get('/coolstore.json', function(req, res, next) {
+  res.json(coolstoreConfig);
 });
 
 // Used for App health checking

@@ -1,4 +1,5 @@
-<div id="verticalNavLayout" class="layout-pf layout-pf-fixed faux-layout" style="background-color: white;">
+<header><nav class="navbar navbar-sidebar">
+<div id="verticalNavLayout" class="layout-pf layout-pf-fixed faux-layout" style="background-color: inherit;">
 <pfng-vertical-navigation id="myNav"
       [brandAlt]="'Coolstore'"
       [contentContainer]="contentContainer"
@@ -37,14 +38,20 @@
       </ul>
     </div>
   </pfng-vertical-navigation>
+  
+  </div>
+</nav>
+</header>
+<main class="container-fluid">
   <div #contentContainer
-       class="container-fluid container-cards-pf container-pf-nav-pf-vertical nav-pf-vertical-with-badges"
+       class="container-fluid container-cards-pf container-pf-nav-pf-vertical nav-pf-vertical-with-badges has-sidebar"
        style="background-color: white;">
-    
+            
     <div class="row">
       <div class="col-sm-12">
         <router-outlet></router-outlet>
       </div>
     </div>
+      
   </div>
-  </div>
+</main>
