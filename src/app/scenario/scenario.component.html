@@ -4,90 +4,39 @@
 <br/>
 
 <div class="row" *ngIf="actionResult">
-    <div class="col-sm-12">
-      <div class="form-group">
-        <pfng-inline-notification
-            [header]="notificationHeader"
-            [message]="notificationMessage"
-            [dismissable]="true"
-            [type]="notificationType"
-            [hidden]="notificationHidden"
-            (hiddenChange)="handleNofiticationHidden($event)">
-        </pfng-inline-notification>
-      </div>
+  <div class="col-sm-12">
+    <div class="form-group">
+      <pfng-inline-notification
+          [header]="notificationHeader"
+          [message]="notificationMessage"
+          [dismissable]="true"
+          [type]="notificationType"
+          [hidden]="notificationHidden"
+          (hiddenChange)="handleNofiticationHidden($event)">
+      </pfng-inline-notification>
     </div>
   </div>
+</div>
 
 <div class="container-fluid pfng-fluid-width-container">
   <div class="row row-cards-pf">
     <div class="col-sm-12" *ngIf="command">
       <pfng-card [config]="command.config"
-                 (onActionSelect)="handleActionSelect($event)"
-                 (onFilterSelect)="handleFilterSelect($event)">
+                 (onActionSelect)="handleActionSelect($event)">
           {{ command.description }}
       </pfng-card>
     </div>
     <div class="col-sm-6" *ngIf="break">
       <pfng-card [config]="break.config"
-                  (onActionSelect)="handleActionSelect($event)"
-                  (onFilterSelect)="handleFilterSelect($event)">
+                  (onActionSelect)="handleActionSelect($event)">
           {{ break.description }}
       </pfng-card>
     </div>
     <div class="col-sm-6" *ngIf="fix">
       <pfng-card [config]="fix.config"
-                  (onActionSelect)="handleActionSelect($event)"
-                  (onFilterSelect)="handleFilterSelect($event)">
+                  (onActionSelect)="handleActionSelect($event)">
           {{ fix.description }}
       </pfng-card>
     </div>
   </div>
 </div>
-
-
-<!--<div class="container-fluid pfng-fluid-width-container">
-<div class="row row-cards-pf">
-
-  <div class="col-sm-12">
-    <pfng-card class="custom-card"
-                [config]="config"
-                [headerTemplate]="spacesHeaderTemplate">
-      <ng-template #spacesHeaderTemplate>
-        <h2 class="card-pf-title">
-          {{ title }}
-        </h2>
-      </ng-template>
-      <div class="col-sm-12 custom-blank-slate-card">
-        <h3>{{ description }}</h3>
-        <div class="blank-slate-pf-main-action">
-          <button class="btn btn-primary btn-lg"> Break </button>
-          <button class="btn btn-primary btn-lg"> Fix </button>
-        </div>
-        <div class="row product-footer-row ng-scope">
-            <div class="col-xs-12">
-              <div class="alert alert-primary" role="alert">
-                A simple primary alert—check it out!
-              </div>
-                <div>
-                    <span><h1 class="ng-binding">$8.50</h1></span>
-                    <div ng-if="item.product.availability.quantity > 0" style="float:right" class="ng-scope"><label title="12 in our store in " class="label label-warning">12 left!</label>
-                        <a target="_blank" href="">&nbsp;<span class="fa fa-map-marker fa-lg"></span></a>
-                    </div>
-                </div>
-
-                <div class="blank-slate-pf-main-action">
-                  <button class="btn btn-primary btn-lg"> Create a space </button>
-                </div>
-
-                <form class="form-inline ng-pristine ng-valid">
-                    <div class="form-group">
-                    </div>
-                    <button ng-click="addToCart(item)" type="submit" class="btn btn-default">Add To Cart</button>
-                </form>
-            </div>
-        </div>
-      </div>
-    </pfng-card>
-  </div>
-</div>
-</div>-->

@@ -1,7 +1,8 @@
 <!--<div  ng-view class="view ng-scope">
 <div class="container-fluid ">-->
-
-<div class="col-sm-4" *ngFor="let product of products; let i = index">
+<div style="height: 100vh; width: 100%; position:relative;">
+<div style="max-height:90vh;overflow:auto;">
+<div class="col-sm-4"  *ngFor="let product of products; let i = index">
   <pfng-card class="custom-card" [config]="config" [headerTemplate]="spacesHeaderTemplate">
     <ng-template #spacesHeaderTemplate>
       <h2 class="card-pf-title">
@@ -47,6 +48,8 @@
       </div>
     </div>
   </pfng-card>
+</div>
+</div>
 </div>
 <!--</div>
 </div>-->
