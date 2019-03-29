@@ -38,6 +38,12 @@ rules:
   verbs:
   - '*'
 - apiGroups:
+  - apps.openshift.io
+  resources:
+  - deploymentconfigs
+  verbs:
+  - patch
+- apiGroups:
   - networking.istio.io
   resources:
   - destinationrules
