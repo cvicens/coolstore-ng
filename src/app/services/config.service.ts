@@ -6,8 +6,9 @@ import { Config } from '../model/config.model';
 const CONFIG_URL = '/coolstore.json';
 
 const CONFIG = {
-  API_ENDPOINT : 'http://istio-ingressgateway-istio-system.apps.serverless-2e82.openshiftworkshop.com',
+  API_ENDPOINT : 'http://istio-ingressgateway-istio-system.apps.serverless-8a7c.openshiftworkshop.com',
   SECURE_API_ENDPOINT : 'secure-gateway-undefined',
+  SCENARIOS_API_ENDPOINT: 'http://scenarios-coolstore.apps.serverless-8a7c.openshiftworkshop.com',
   SSO_ENABLED: false
 };
 
