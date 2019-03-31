@@ -35,6 +35,6 @@ export class ScenariosService {
   }
 
   runAction(uri: string) {
-    return this.http.get<GenericResult>(uri);
+    return this.http.get<GenericResult>(this.baseUrl + '/' + uri);
   }
 }
