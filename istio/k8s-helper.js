@@ -46,7 +46,7 @@ async function scaleDeploymentConfig (config, objectName, replicas) {
     },
     rejectUnauthorized: false,
     method: 'PATCH',
-    body: `{"spec":{"replicas": ${replicas} }}`,
+    body: {spec:{replicas: replicas }},
     uri: config.url + '/' + baseUri + '/' + objectName,
     headers: {
       'Authorization': 'Bearer ' + config.auth.bearer,

@@ -30,11 +30,13 @@ const appRoutes: Routes = [
     component: ScenarioComponent,
     data: {
       title: 'Default Scenario',
-      description: 'Running this scenario you will go back to the default service mesh configuration',
+      description: 'By running this scenario you will go back to the default service mesh configuration',
       command: {
-        title: 'Go back to default setting', subTitle: '',
+        title: 'Go back to default settings', 
+        subTitle: '',
         // tslint:disable-next-line:max-line-length
         description: 'By executing this command action istio/default will be run and both Virtual Services and Destion Rules will be deleted',
+        image: '',
         actionText: 'Execute', actionUrl: 'istio/default'
       }
     }
@@ -43,16 +45,19 @@ const appRoutes: Routes = [
     path: 'scenario/circuit-breaker',
     component: ScenarioComponent,
     data: {
-      title: 'Header Routing',
-      description: 'Blah',
+      title: 'Circtuit Breaking',
+      description: 'Avoid cascading errors by applying the Cirtuit Breaker pattern',
       break: {
-        title: 'Adding random delay...', subTitle: '',
-        description: 'This break...',
+        title: 'Break the \'Catalog\' service',
+        subTitle: '',
+        description: 'This action breaks the code in one of the PODs of the catalog service, you can check the logs of the container',
+        image: '',
         actionText: 'Break', actionUrl: 'istio/break-1'
       },
       fix: {
-        title: 'Returning to ...', subTitle: '',
-        description: 'This fix...',
+        title: 'Fix it by using a retry technic', subTitle: '',
+        description: 'This fix applies a change in the catalog Virtual Service so that if there\'s a failure it retries up to 3 times',
+        image: '',
         actionText: 'Fix', actionUrl: 'istio/fix-1'
       }
     }

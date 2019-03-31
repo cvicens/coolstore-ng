@@ -4,6 +4,7 @@ const corser = require("corser");
 const keycloakConfig = require('./config/keycloak.config');
 const coolstoreConfig = require('./config/coolstore.config');
 
+const { applyDefaultConfig } = require('./istio/default-raw');
 const { applyHeaderRouting } = require('./istio/header-routing-raw');
 
 const app = express();
@@ -40,6 +41,17 @@ app.get('/istio/header-routing', async function(req, res) {
         console.log('header-routing error', error);
         res.status(500).send({success: false, error: error});
     }
+});
+
+// Used for App health checking
+app.get('/istio/default', async function(req, res) {
+  try {
+      const result = await applyDefaultConfig();
+      res.send(result);
+  } catch (error) {
+      console.log('header-routing error', error);
+      res.status(500).send({success: false, error: error});
+  }
 });
 
 const port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080;

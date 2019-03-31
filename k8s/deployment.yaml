@@ -3,8 +3,8 @@ apiVersion: v1
 kind: ImageStream
 metadata:
   labels:
-    build: web-ui-ng
-  name: web-ui-ng
+    build: web-ui
+  name: web-ui
 spec:
   tags:
   - name: latest
@@ -13,13 +13,13 @@ apiVersion: v1
 kind: BuildConfig
 metadata:
   labels:
-    build: web-ui-ng
-  name: web-ui-ng
+    build: web-ui
+  name: web-ui
 spec:
   output:
     to:
       kind: ImageStreamTag
-      name: web-ui-ng:latest
+      name: web-ui:latest
   source:
     contextDir: .
     git:
@@ -42,14 +42,14 @@ apiVersion: v1
 kind: DeploymentConfig
 metadata:
   labels:
-    app: web-ui-ng
+    app: web-ui
     version: 1.0.0
-  name: web-ui-ng
+  name: web-ui
 spec:
   replicas: 1
   selector:
-    app: web-ui-ng
-    deploymentconfig: web-ui-ng
+    app: web-ui
+    deploymentconfig: web-ui
   strategy:
     resources: {}
     rollingParams:
@@ -64,17 +64,19 @@ spec:
       annotations:
         sidecar.istio.io/inject: "false"
       labels:
-        app: web-ui-ng
+        app: web-ui
         version: 1.0.0
-        deploymentconfig: web-ui-ng
+        deploymentconfig: web-ui
     spec:
       serviceAccountName: web-ui
       containers:
-      - image: web-ui-ng
-        name: web-ui-ng
+      - image: web-ui
+        name: web-ui
         env:
           - name: COOLSTORE_GW_ENDPOINT
             value: "${COOLSTORE_GW_ENDPOINT}"
+          - name: COOLSTORE_SCENARIOS_ENDPOINT
+            value: "${COOLSTORE_SCENARIOS_ENDPOINT}"
         ports:
         - containerPort: 8080
           name: http
@@ -85,19 +87,19 @@ spec:
   - imageChangeParams:
       automatic: true
       containerNames:
-      - web-ui-ng
+      - web-ui
       from:
         kind: ImageStreamTag
-        name: web-ui-ng:latest
+        name: web-ui:latest
     type: ImageChange
 ---
 apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: web-ui-ng
+    app: web-ui
     version: 1.0.0
-  name: web-ui-ng
+  name: web-ui
 spec:
   ports:
   - name: http
@@ -105,8 +107,8 @@ spec:
     protocol: TCP
     targetPort: 8080
   selector:
-    app: web-ui-ng
-    deploymentconfig: web-ui-ng
+    app: web-ui
+    deploymentconfig: web-ui
 ---
 apiVersion: v1
 kind: Route
@@ -115,11 +117,11 @@ metadata:
     expose: "true"
     group: com.redhat.cloudnative
     version: 1.0.0
-    app: web-ui-ng
-  name: web-ui-ng
+    app: web-ui
+  name: web-ui
 spec:
   port:
     targetPort: http
   to:
     kind: Service
-    name: web-ui-ng
+    name: web-ui
